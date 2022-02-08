@@ -1,6 +1,6 @@
 {% if review_count %}
     <span class="score">
-        <div class="score-wrap">
+        <div class="score-wrap align-top">
             <span class="stars-active" style="width:{{stars_percent}}%">
                 <i class="fa fa-star" aria-hidden="true"></i>
                 <i class="fa fa-star" aria-hidden="true"></i>
@@ -16,7 +16,9 @@
                 <i class="fa fa-star-o" aria-hidden="true"></i>
         </span>        
         </div>
-        {{ avg_rating|floatformat:1 }} ({{review_count}} {% if review_count == 1 %} review{% else %} reviews{% endif %})
+        <span class="align-top">
+            {{ avg_rating|floatformat:1 }} ({{review_count}} {% if review_count == 1 %} review{% else %} reviews{% endif %})
+        </span>
     </span> 
 {% else %}
   <span class="fst-italic">No ratings yet</span>
