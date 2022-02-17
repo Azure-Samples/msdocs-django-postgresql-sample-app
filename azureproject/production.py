@@ -25,7 +25,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
 hostname = os.environ['DBHOST']
 
 # Configure Postgres database; the full username for PostgreSQL flexible server is
-# username (no sever name).
+# username (not @sever-name).
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
