@@ -1,25 +1,28 @@
 <!doctype html>
 <head>
-    <title>Hello Azure - Python Quickstart</title>
+    <title>Hello Azure - Python Django and PostgreSQL Tutorial</title>
 </head>
 <html>
     <body>
         <main class="container">                
-            <h3>Oops, there was a problem</h3>
+            <h3>There was a problem (500 error) with the sample app.</h3>
             <div>Try the following troubleshooting tips if <strong>running locally</strong>:
               <ul>
                 <li>Check that an <em>.env</em> file exists and defines the environment variables DBHOST, DBNAME, DBUSER, and DBPASS.
                 </li>
-                <li>Check that you ran a migration first with "python manage.py migrate".</li>
+                <li>Check that you ran a [migration](https://docs.djangoproject.com/en/1.8/topics/migrations/) first with "python manage.py migrate".</li>
                 <li>Check that the database exists in your local PostgresSQL server.</li>
               </ul>
             </div>                   
             <div>Try the following troubleshooting tips if running in <strong>Azure App Service</strong>:
               <ul>
-                <li>Check that the environment variables (DBHOST, DBNAME, DBUSER and DBPASS) are defined as configuration app settings for the service.
+                <li>Check that the environment variables (DBHOST, DBNAME, DBUSER and DBPASS) are defined as [configuration settings](https://docs.microsoft.com/azure/app-service/configure-common)
+                  for the service.
                 </li>
-                <li>Check that you ran a migration first with "python manage.py migrate".</li>
-                <li>Check that the database referenced in DBNAME exists in the PostgresSQL service.</li>
+                <li>Check that you ran a [migration](https://docs.djangoproject.com/en/1.8/topics/migrations/) first with "python manage.py migrate".                  
+                </li>
+                <li>Check that the database referenced in the DBNAME environment exists in the PostgresSQL service.                  
+                </li>
               </ul>
             </div>                   
         </main>
