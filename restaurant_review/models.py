@@ -14,7 +14,7 @@ class Restaurant(models.Model):
 class Review(models.Model):
     restaurant = models.ForeignKey(Restaurant, on_delete=models.CASCADE)
     user_name = models.CharField(max_length=20)
-    rating=models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(100)])
+    rating=models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)])
     review_text = models.CharField(max_length=500)
     review_date = models.DateTimeField('review date')    
     def __str__(self):
