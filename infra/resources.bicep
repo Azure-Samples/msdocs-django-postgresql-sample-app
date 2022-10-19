@@ -16,7 +16,6 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
       alwaysOn: true
       linuxFxVersion: 'PYTHON|3.10'
       ftpsState: 'Disabled'
-      appCommandLine: 'startup.sh'
     }
     httpsOnly: true
   }
@@ -70,7 +69,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
 }
 
 resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-03-01-preview' = {
-  name: '${resourceToken}-workspace'
+  name: '${name}-${resourceToken}-workspace'
   location: location
   tags: tags
   properties: any({
@@ -96,7 +95,7 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
     version: '13'
     administratorLogin: 'django'
     administratorLoginPassword: databasePassword
-    availabilityZone: '1'
+    availabilityZone: '2'
     storage: {
       storageSizeGB: 128
     }
@@ -120,7 +119,7 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
 
 resource djangoDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/databases@2022-01-20-preview' = {
   parent: postgresServer
-  name: 'django'
+  name: 'django2222'
 }
 
 resource postgresServer_AllowAllWindowsAzureIps 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2022-01-20-preview' = {
