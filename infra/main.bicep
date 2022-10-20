@@ -9,6 +9,10 @@ param name string
 @description('Primary location for all resources')
 param location string
 
+@secure()
+@description('PostGreSQL Server administrator password')
+param databasePassword string
+
 var resourceToken = toLower(uniqueString(subscription().id, name, location))
 var tags = { 'azd-env-name': name }
 
@@ -26,7 +30,7 @@ module resources 'resources.bicep' = {
     location: location
     resourceToken: resourceToken
     tags: tags
-    databasePassword: '${resourceToken}4@#$'
+    databasePassword: databasePassword
   }
 }
 

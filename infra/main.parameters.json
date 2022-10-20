@@ -7,6 +7,9 @@
       },
       "location": {
         "value": "${AZURE_LOCATION}"
+      },
+      "databasePassword": {
+        "value": "$(secretOrRandomPassword ${AZURE_KEY_VAULT_NAME} databasePassword)"
       }
     }
   }
