@@ -1,0 +1,1 @@
+FROM mcr.microsoft.com/azure-dev-cli-apps
