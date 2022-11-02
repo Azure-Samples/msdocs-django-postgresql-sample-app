@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Django",
+            "name": "Run Server",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/demo-application/manage.py",
+            "program": "${workspaceFolder}/manage.py",
             "args": [
                 "runserver", 
             ],
@@ -20,7 +20,7 @@
             "name": "Migrate",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/demo-application/manage.py",
+            "program": "${workspaceFolder}/manage.py",
             "args": [
                 "migrate"
             ],
@@ -30,7 +30,7 @@
             "name": "Super",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/demo-application/manage.py",
+            "program": "${workspaceFolder}/manage.py",
             "args": [
                 "createsuperuser"
             ],
