@@ -13,8 +13,7 @@
                 "runserver", 
             ],
             "cwd": "${workspaceFolder}",
-            "django": true,
-            "envFile": "${workspaceFolder}/.env"
+            "django": true
         },
         {
             "name": "Migrate",
