@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["macos-11", "ubuntu-20.04", "windows-latest"]
+        os: ["ubuntu-20.04"]
         python_version: ["3.11"]
     services:
       postgres:
@@ -45,7 +45,7 @@ jobs:
             python -m compileall restaurant_review -f
         - name: Run Django server
           run: |
-            python manage.py runserver
+            python manage.py runserver &
           env:
             DBNAME: postgres
             DBHOST: localhost
