@@ -9,7 +9,10 @@
         "value": "${AZURE_LOCATION}"
       },
       "databasePassword": {
-        "value": "$(secretOrRandomPassword databasePassword)"
+        "value": "$(secretOrRandomPassword)"
+      },
+      "secretKey": {
+        "value": "$(secretOrRandomPassword)"
       }
     }
   }

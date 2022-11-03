@@ -13,6 +13,10 @@ param location string
 @description('PostGreSQL Server administrator password')
 param databasePassword string
 
+@secure()
+@description('Django SECRET_KEY for securing signed data')
+param secretKey string
+
 var resourceToken = toLower(uniqueString(subscription().id, name, location))
 var tags = { 'azd-env-name': name }
 
@@ -31,6 +35,7 @@ module resources 'resources.bicep' = {
     resourceToken: resourceToken
     tags: tags
     databasePassword: databasePassword
+    secretKey: secretKey
   }
 }
 

@@ -1,9 +1,11 @@
 param name string
 param location string
 param resourceToken string
+param tags object
 @secure()
 param databasePassword string
-param tags object
+@secure()
+param secretKey string
 
 var prefix = '${name}-${resourceToken}'
 
@@ -107,6 +109,7 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
       DBUSER: postgresServer.properties.administratorLogin
       DBPASS: databasePassword
       SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
+      SECRET_KEY: secretKey
     }
   }
 
