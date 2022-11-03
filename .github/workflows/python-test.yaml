@@ -46,7 +46,7 @@ jobs:
         - name: Run Django server
           run: |
             python manage.py migrate
-            nohup python manage.py runserver &
+            nohup python manage.py runserver 8000 &
             ! curl http://localhost:8000 | grep -q btn-success
           env:
             DBNAME: postgres
