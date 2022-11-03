@@ -1,3 +1,5 @@
+name: Azure Developer CLI
+
 on:
   workflow_dispatch:
   push:
