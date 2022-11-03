@@ -14,7 +14,16 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-20.04"]
-        python_version: ["3.8", "3.9", "3.10", "3.11"]
+        python_version: ["3.11"]
+    services:
+      postgres:
+        image: postgres:11
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+        - 5432:5432
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
         - uses: actions/checkout@v3
         - name: Setup python
@@ -38,3 +47,8 @@ jobs:
           run: |
             python manage.py migrate
             python manage.py runserver &
+          env:
+            DBNAME: postgres
+            DBHOST: localhost
+            DBUSER: postgres
+            DBPASS: postgres
