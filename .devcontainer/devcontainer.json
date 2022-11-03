@@ -31,5 +31,8 @@
         8000
     ],
     "postCreateCommand": "",
-    "remoteUser": "vscode"
+    "remoteUser": "vscode",
+    "hostRequirements": {
+        "memory": "8gb"
+    }
 }
