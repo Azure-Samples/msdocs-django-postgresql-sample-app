@@ -45,7 +45,8 @@ jobs:
             python -m compileall restaurant_review -f
         - name: Run Django server
           run: |
-            python manage.py runserver &
+            python manage.py migrate &&
+            python manage.py runserver &&
             sleep 10 &&
             curl http://localhost:8000
           env:
