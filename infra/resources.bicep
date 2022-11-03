@@ -172,6 +172,17 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-03
   })
 }
 
+module applicationInsightsResources 'appinsights.bicep' = {
+  name: 'applicationinsights-resources'
+  params: {
+    prefix: prefix
+    location: location
+    tags: tags
+    workspaceId: logAnalyticsWorkspace.id
+  }
+}
+
+
 resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-preview' = {
   location: location
   tags: tags
@@ -228,3 +239,4 @@ resource postgresServer_AllowAllWindowsAzureIps 'Microsoft.DBforPostgreSQL/flexi
 }
 
 output WEB_URI string = 'https://${web.properties.defaultHostName}'
+output APPLICATIONINSIGHTS_CONNECTION_STRING string = applicationInsightsResources.outputs.APPLICATIONINSIGHTS_CONNECTION_STRING
