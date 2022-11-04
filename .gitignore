@@ -129,5 +129,3 @@ dmypy.json
 .pyre/
 
 .azure
-
-nohup.out

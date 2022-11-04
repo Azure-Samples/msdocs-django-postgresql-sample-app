@@ -7,3 +7,4 @@ services:
     project: .
     language: py
     host: appservice
+  

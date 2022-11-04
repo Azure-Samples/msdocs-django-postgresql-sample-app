@@ -29,9 +29,6 @@
 		"python.formatting.blackArgs": [
 			"--line-length=80"
 		],
-		"[python]": {
-			"editor.formatOnSave": true,
-		},
 		"python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
 		"python.formatting.blackPath": "/usr/local/py-utils/bin/black",
 		"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
