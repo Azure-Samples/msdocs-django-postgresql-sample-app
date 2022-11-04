@@ -55,7 +55,7 @@ This repository is set up for deployment on Azure App Service (w/PostGreSQL flex
 azd up
 ```
 
-It will prompt you to login and to provide a name (like "django-app") and location (like "centralus"). Then it will provision the resources in your account (if they don't yet exist) and deploy the latest code.
+It will prompt you to login and to provide a name (like "django-app") and location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location (like to "centralus") can help, as there are availability constraints for some of the resources.
 
 4. To be able to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
 
