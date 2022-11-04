@@ -92,9 +92,9 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: appServicePlan.id
     siteConfig: {
       alwaysOn: true
-      linuxFxVersion: 'PYTHON|3.10'
+      linuxFxVersion: 'PYTHON|3.9'
       ftpsState: 'Disabled'
-      appCommandLine: 'python manage.py migrate'
+      appCommandLine: 'startup.sh'
     }
     httpsOnly: true
   }
