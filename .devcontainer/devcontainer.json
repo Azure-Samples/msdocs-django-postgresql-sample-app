@@ -1,12 +1,8 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.192.0/containers/python-3-postgres
-// Update the VARIANT arg in docker-compose.yml to pick a Python version: 3, 3.8, 3.7, 3.6 
 {
 	"name": "Python 3 & PostgreSQL",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
-	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"sqltools.connections": [
 			{
@@ -41,25 +37,25 @@
 		"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest"
 	},
 	"features": {
-        "ghcr.io/devcontainers/features/github-cli:1": {
+        "ghcr.io/devcontainers/features/azure-cli:1": {
             "version": "latest"
         },
-        "ghcr.io/devcontainers/features/azure-cli:1": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
             "version": "latest"
         }
     },
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
+		"ms-azuretools.azure-dev",
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"mtxr.sqltools",
-		"mtxr.sqltools-driver-pg",
-		"ms-azuretools.azure-dev"
+		"mtxr.sqltools-driver-pg"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		8000, 5432
-	],
+	]
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "",
 	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
