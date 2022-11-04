@@ -29,10 +29,7 @@ SECRET_KEY = os.getenv(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "pamelafox-animated-trout-7pjx9rxj6frp9p-8000.preview.app.github.dev",
-]
+ALLOWED_HOSTS = []
 
 
 # Application definition
