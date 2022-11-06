@@ -199,7 +199,6 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
     version: '13'
     administratorLogin: 'django'
     administratorLoginPassword: databasePassword
-    availabilityZone: '1'
     storage: {
       storageSizeGB: 128
     }
