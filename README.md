@@ -45,7 +45,11 @@ python manage.py runserver
 
 ### Deployment
 
-This repository is set up for deployment on Azure App Service (w/PostGreSQL flexible server) using the configuration files in the `infra` folder.
+This repo is set up for deployment on Azure App Service (w/PostGreSQL server) using the configuration files in the `infra` folder.
+
+🎥 Watch me deploy the code in [this screencast](https://www.youtube.com/watch?v=JDlZ4TgPKYc).
+
+Steps for deployment:
 
 1. Sign up for a [free Azure account](https://azure.microsoft.com/free/?WT.mc_id=python-79461-pamelafox)
 2. Install the [Azure Dev CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?WT.mc_id=python-79461-pamelafox). (If you opened this repository in a devcontainer, that part will be done for you.)
