@@ -61,13 +61,17 @@ azd up
 
 It will prompt you to login and to provide a name (like "django-app") and location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location (like to "centralus") can help, as there are availability constraints for some of the resources.
 
-4. To be able to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
+4. When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the restaurant review app! 🎉 If you see an error, open the Azure Portal from the URL in the command output, navigate to the App Service, select Logstream, and check the logs for any errors.
+
+![Screenshot of Django restaurants website](screenshot_website.png)
+
+5. If you'd like to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
 
 ```shell
 python manage.py createsuperuser
 ```
 
-5. When you've made any changes to the app code, you can just run:
+6. When you've made any changes to the app code, you can just run:
 
 ```shell
 azd deploy
