@@ -23,21 +23,21 @@ which makes it easier to develop apps locally, deploy them to Azure, and monitor
 This project has devcontainer support, so you can open it in Github Codespaces or local VS Code with the Dev Containers extension. If you're unable to open the devcontainer,
 then it's best to first [create a Python virtual environment](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments) and activate that.
 
-Install the requirements:
+1. Install the requirements:
 
 ```shell
 pip install -r requirements.txt
 ```
 
-Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance.
+2. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the devcontainer, copy the values from `.env.sample.devcontainer`.
 
-Run the migrations: (or use VS Code "Run" button and select "Migrate")
+3. Run the migrations: (or use VS Code "Run" button and select "Migrate")
 
 ```shell
 python manage.py migrate
 ```
 
-Run the local server: (or use VS Code "Run" button and select "Run server")
+4. Run the local server: (or use VS Code "Run" button and select "Run server")
 
 ```shell
 python manage.py runserver
