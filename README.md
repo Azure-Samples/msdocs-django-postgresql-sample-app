@@ -15,7 +15,7 @@ The [requirements.txt](./requirements.txt) has the following packages:
 
 ## Using this project with the Azure Developer CLI (azd)
 
-This project is designed to work well with the [Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview?WT.mc_id=python-79650-pamelafox),
+This project is designed to work well with the [Azure Developer CLI](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/overview),
 which makes it easier to develop apps locally, deploy them to Azure, and monitor them.
 
 ### Local development
