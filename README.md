@@ -25,23 +25,23 @@ then it's best to first [create a Python virtual environment](https://docs.pytho
 
 1. Install the requirements:
 
-```shell
-pip install -r requirements.txt
-```
+  ```shell
+  pip install -r requirements.txt
+  ```
 
 2. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the devcontainer, copy the values from `.env.sample.devcontainer`.
 
 3. Run the migrations: (or use VS Code "Run" button and select "Migrate")
 
-```shell
-python manage.py migrate
-```
+  ```shell
+  python manage.py migrate
+  ```
 
 4. Run the local server: (or use VS Code "Run" button and select "Run server")
 
-```shell
-python manage.py runserver
-```
+  ```shell
+  python manage.py runserver
+  ```
 
 ### Deployment
 
