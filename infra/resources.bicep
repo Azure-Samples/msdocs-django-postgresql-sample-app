@@ -192,8 +192,8 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
   tags: tags
   name: pgServerName
   sku: {
-    name: 'Standard_D2ds_v4'
-    tier: 'GeneralPurpose'
+    name: 'Standard_B1ms'
+    tier: 'Burstable'
   }
   properties: {
     version: '13'
