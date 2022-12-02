@@ -192,11 +192,11 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
   tags: tags
   name: pgServerName
   sku: {
-    name: 'Standard_D2ds_v4'
-    tier: 'GeneralPurpose'
+    name: 'Standard_B1ms'
+    tier: 'Burstable'
   }
   properties: {
-    version: '13'
+    version: '12'
     administratorLogin: 'django'
     administratorLoginPassword: databasePassword
     storage: {
@@ -230,15 +230,6 @@ resource postgresServer 'Microsoft.DBforPostgreSQL/flexibleServers@2022-01-20-pr
 resource djangoDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/databases@2022-01-20-preview' = {
   parent: postgresServer
   name: 'django'
-}
-
-resource postgresServer_AllowAllWindowsAzureIps 'Microsoft.DBforPostgreSQL/flexibleServers/firewallRules@2022-01-20-preview' = {
-  parent: postgresServer
-  name: 'AllowAllWindowsAzureIps'
-  properties: {
-    startIpAddress: '0.0.0.0'
-    endIpAddress: '0.0.0.0'
-  }
 }
 
 output WEB_URI string = 'https://${web.properties.defaultHostName}'
