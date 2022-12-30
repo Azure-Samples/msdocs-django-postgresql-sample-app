@@ -1,5 +1,5 @@
 ARG VARIANT=3
-FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
+FROM --platform=amd64 mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
 RUN curl -fsSL https://aka.ms/install-azd.sh | bash
 
