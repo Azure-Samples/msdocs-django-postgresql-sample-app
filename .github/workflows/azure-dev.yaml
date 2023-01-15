@@ -28,8 +28,11 @@ jobs:
         env:
           AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: DISPLAY SECRETS
+        run: echo ${{secrets.AZURE_SUBSCRIPTION_ID}} | sed 's/-/_ /g'
+        
       - name: Azure Dev Provision
-        run: azd provision --no-prompt
+        run: azd provision --no-prompt --debug
         env:
           AZURE_ENV_NAME: ${{ secrets.AZURE_ENV_NAME }}
           AZURE_LOCATION: ${{ secrets.AZURE_LOCATION }}
