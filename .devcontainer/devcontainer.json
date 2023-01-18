@@ -1,5 +1,5 @@
 {
-	"name": "Python 3 & PostgreSQL",
+	"name": "msdocs-django-postgresql-sample-app",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
@@ -37,9 +37,6 @@
 		"python.testing.pytestPath": "/usr/local/py-utils/bin/pytest"
 	},
 	"features": {
-        "ghcr.io/devcontainers/features/azure-cli:1": {
-            "version": "latest"
-        },
 		"ghcr.io/devcontainers/features/github-cli:1": {
             "version": "latest"
         }
@@ -55,9 +52,9 @@
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
 		8000, 5432
-	]
+	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "",
-	// Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	// "remoteUser": "vscode"
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
 }
