@@ -105,10 +105,7 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
   resource appSettings 'config' = {
     name: 'appsettings'
     properties: {
-      DBHOST: postgresServer.name
-      DBNAME: djangoDatabase.name
-      DBUSER: postgresServer.properties.administratorLogin
-      DBPASS: databasePassword
+      AZURE_POSTGRESQL_CONNECTIONSTRING: 'dbname=${djangoDatabase.name} host=${postgresServer.name}.postgres.database.azure.com port=5432 sslmode=require user=${postgresServer.properties.administratorLogin} password=${databasePassword}'
       SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
       SECRET_KEY: secretKey
     }
