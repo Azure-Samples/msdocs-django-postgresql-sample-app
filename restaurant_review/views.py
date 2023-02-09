@@ -7,8 +7,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 from restaurant_review.models import Restaurant, Review
 
-# Create your views here.
-
 
 def index(request):
     print('Request for index page received')
