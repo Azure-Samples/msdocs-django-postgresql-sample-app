@@ -1,5 +1,5 @@
 from django.db.models import Avg, Count
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils import timezone
@@ -11,24 +11,19 @@ from restaurant_review.models import Restaurant, Review
 
 def index(request):
     print('Request for index page received')
-
     restaurants = Restaurant.objects.annotate(avg_rating=Avg('review__rating')).annotate(review_count=Count('review'))
     return render(request, 'restaurant_review/index.html', {'restaurants': restaurants })
 
 
 def details(request, id):
     print('Request for restaurant details page received')
-
     restaurant = get_object_or_404(Restaurant, pk=id)
-
-
     return render(request, 'restaurant_review/details.html', {'restaurant': restaurant})
 
 
 
 def create_restaurant(request):
     print('Request for add restaurant page received')
-
     return render(request, 'restaurant_review/create_restaurant.html')
 
 
