@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+
 from dotenv import load_dotenv
 
 
@@ -10,7 +11,7 @@ def main():
     # If WEBSITE_HOSTNAME is defined as an environment variable, then we're running on Azure App Service
 
     # Only for Local Development - Load environment variables from the .env file
-    if not 'WEBSITE_HOSTNAME' in os.environ:
+    if 'WEBSITE_HOSTNAME' not in os.environ:
         print("Loading environment variables for .env file")
         load_dotenv('./.env')
 
