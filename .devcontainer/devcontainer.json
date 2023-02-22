@@ -5,9 +5,9 @@
 	"workspaceFolder": "/workspace",
 	"features": {
 		"ghcr.io/devcontainers/features/github-cli:1": {
-			"version": "latest"
-		}
-	},
+            "version": "latest"
+        }
+    },
 	"customizations": {
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
