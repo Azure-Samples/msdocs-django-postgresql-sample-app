@@ -6,7 +6,7 @@ services:
       context: ..
       dockerfile: .devcontainer/Dockerfile
       args:
-        # [Choice] Python version: 3, 3.8, 3.7, 3.6
+        # [Choice] Python version: 3, 3.9, 3.10, 3.11
         VARIANT: 3.9
         # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
         USER_UID: 1000
