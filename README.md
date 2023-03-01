@@ -26,7 +26,7 @@ then it's best to first [create a Python virtual environment](https://docs.pytho
 1. Install the requirements:
 
     ```shell
-    pip install -r requirements.txt
+    python3 -m pip install -r requirements.txt
     ```
 
 2. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the devcontainer, copy the values from `.env.sample.devcontainer`.
@@ -34,20 +34,20 @@ then it's best to first [create a Python virtual environment](https://docs.pytho
 3. Run the migrations: (or use VS Code "Run" button and select "Migrate")
 
     ```shell
-    python manage.py migrate
+    python3 manage.py migrate
     ```
 
 4. Run the local server: (or use VS Code "Run" button and select "Run server")
 
     ```shell
-    python manage.py runserver
+    python3 manage.py runserver
     ```
 
 ### Deployment
 
 This repo is set up for deployment on Azure App Service (w/PostGreSQL server) using the configuration files in the `infra` folder.
 
-🎥 Watch me deploy the code in [this screencast](https://www.youtube.com/watch?v=JDlZ4TgPKYc).
+🎥 Watch a deployment of the code in [this screencast](https://www.youtube.com/watch?v=JDlZ4TgPKYc).
 
 Steps for deployment:
 
@@ -68,7 +68,7 @@ Steps for deployment:
 5. If you'd like to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
 
     ```shell
-    python manage.py createsuperuser
+    python3 manage.py createsuperuser
     ```
 
 6. When you've made any changes to the app code, you can just run:
