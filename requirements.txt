@@ -1,4 +1,4 @@
 Django==4.1.7
 psycopg2-binary==2.9.5
 python-dotenv==0.21.1
-whitenoise==6.3.0
+whitenoise==6.4.0
