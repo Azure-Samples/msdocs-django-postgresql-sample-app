@@ -46,6 +46,7 @@ jobs:
         - name: Run Django server
           run: |
             python manage.py migrate
+            python manage.py test restaurant_review &&
             python manage.py runserver &
           env:
             DBNAME: postgres
