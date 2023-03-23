@@ -35,6 +35,7 @@ then it's best to first [create a Python virtual environment](https://docs.pytho
 
     ```shell
     python -c 'import secrets; print(secrets.token_hex())'
+    ```
 
 4. Run the migrations: (or use VS Code "Run" button and select "Migrate")
 
