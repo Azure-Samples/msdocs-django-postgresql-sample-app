@@ -20,7 +20,7 @@ which makes it easier to develop apps locally, deploy them to Azure, and monitor
 
 ### Local development
 
-This project has devcontainer support, so you can open it in Github Codespaces or local VS Code with the Dev Containers extension. If you're unable to open the devcontainer,
+This project has Dev Container support, so you can open it in Github Codespaces or local VS Code with the Dev Containers extension. If you're unable to open the Dev Container,
 then it's best to first [create a Python virtual environment](https://docs.python.org/3/tutorial/venv.html#creating-virtual-environments) and activate that.
 
 1. Install the requirements:
@@ -29,7 +29,7 @@ then it's best to first [create a Python virtual environment](https://docs.pytho
     python3 -m pip install -r requirements.txt
     ```
 
-2. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the devcontainer, copy the values from `.env.sample.devcontainer`. 
+2. Create an `.env` file using `.env.sample` as a guide. Set the value of `DBNAME` to the name of an existing database in your local PostgreSQL instance. Set the values of `DBHOST`, `DBUSER`, and `DBPASS` as appropriate for your local PostgreSQL instance. If you're in the Dev Container, copy the values from `.env.sample.devcontainer`. 
 
 3. In the `.env` file, fill in a secret value for `SECRET_KEY`. You can use this command to generate an appropriate value:
 
@@ -58,26 +58,34 @@ This repo is set up for deployment on Azure App Service (w/PostGreSQL server) us
 Steps for deployment:
 
 1. Sign up for a [free Azure account](https://azure.microsoft.com/free/)
-2. Install the [Azure Dev CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd). (If you opened this repository in a devcontainer, that part will be done for you.)
-3. Provision and deploy all the resources:
+2. Install the [Azure Dev CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd). (If you opened this repository in a Dev Container, that part will be done for you.)
+3. Initialize a new `azd` environment:
+
+    ```shell
+    azd init
+    ```
+
+    It will prompt you to provide a name (like "django-app") that will later be used in the name of the deployed resources.
+
+4. Provision and deploy all the resources:
 
     ```shell
     azd up
     ```
 
-    It will prompt you to login and to provide a name (like "django-app") and location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location (like to "centralus") can help, as there are availability constraints for some of the resources.
+    It will prompt you to login, pick a subscription, and provide a location (like "eastus"). Then it will provision the resources in your account and deploy the latest code. If you get an error with deployment, changing the location (like to "centralus") can help, as there may be availability constraints for some of the resources.
 
-4. When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the restaurant review app! 🎉 If you see an error, open the Azure Portal from the URL in the command output, navigate to the App Service, select Logstream, and check the logs for any errors.
+5. When `azd` has finished deploying, you'll see an endpoint URI in the command output. Visit that URI, and you should see the front page of the restaurant review app! 🎉 If you see an error, open the Azure Portal from the URL in the command output, navigate to the App Service, select Logstream, and check the logs for any errors.
 
     ![Screenshot of Django restaurants website](screenshot_website.png)
 
-5. If you'd like to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
+6. If you'd like to access `/admin`, you'll need a Django superuser. Navigate to the Azure Portal for the App Service, select SSH, and run this command:
 
     ```shell
     python3 manage.py createsuperuser
     ```
 
-6. When you've made any changes to the app code, you can just run:
+7. When you've made any changes to the app code, you can just run:
 
     ```shell
     azd deploy
