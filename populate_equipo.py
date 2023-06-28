@@ -7,7 +7,7 @@ import django
 django.setup()
 
 import csv
-from ingreso.models import Equipo
+from restaurant_review.models import Equipo
 
 
 def populate(N):
@@ -22,9 +22,7 @@ def populate(N):
                 eq_tipo = row[0]
                 eq_marca = row[1]
                 eq_serie = row[2]
-                equipo = Equipo.objects.get_or_create(
-                    eq_tipo=eq_tipo, eq_marca=eq_marca, eq_serie=eq_serie
-                )[0]
+                equipo = Equipo.objects.get_or_create(eq_tipo=eq_tipo, eq_marca=eq_marca, eq_serie=eq_serie)[0]
 
                 line_count += 1
 

@@ -7,7 +7,7 @@ import django
 django.setup()
 
 import csv
-from ingreso.models import Persona
+from restaurant_review.models import Persona
 
 
 def populate(N):
@@ -22,9 +22,7 @@ def populate(N):
                 id_tipo = "CC"
                 id_num = row[0]
                 nom_persona = row[1]
-                persona = Persona.objects.get_or_create(
-                    id_tipo=id_tipo, id_num=id_num, nom_persona=nom_persona
-                )[0]
+                persona = Persona.objects.get_or_create(id_tipo=id_tipo, id_num=id_num, nom_persona=nom_persona)[0]
 
                 line_count += 1
 
