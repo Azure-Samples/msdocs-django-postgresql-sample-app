@@ -107,3 +107,4 @@ class RegEquipo(models.Model):
 
     def __str__(self):
         return self.ts_ing.strftime("%Y-%m-%d") + "-" + str(self.equipo)
+
