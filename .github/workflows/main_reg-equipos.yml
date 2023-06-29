@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'reg-equipos'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_1CCF0ECE7E9448D8AC284A3EA7ECDB96 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_715A1DE133F545D0A107E82BA330E0BB }}
