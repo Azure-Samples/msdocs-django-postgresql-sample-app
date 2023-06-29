@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 # Template tagging
-app_name = "ing"
+app_name = "ingreso"
 
 urlpatterns = [
     path("user_login/", views.user_login, name="user_login"),

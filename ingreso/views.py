@@ -30,7 +30,7 @@ def get_messages_count(request):
 
 
 class IndexView(TemplateView):
-    template_name = "ing/index.html"
+    template_name = "ingreso/index.html"
 
 
 def user_login(request):
@@ -43,7 +43,7 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse("ing:sedes"))
+                return HttpResponseRedirect(reverse("ingreso:sedes"))
             else:
                 return HttpResponse("Usuario no activo!")
         else:
@@ -51,7 +51,7 @@ def user_login(request):
             print("Usuario: '{}', password: '{}'".format(username, password))
             return HttpResponse("Usuario/password inválido!")
     else:
-        return render(request, "ing/login.html", {})
+        return render(request, "ingreso/login.html", {})
 
 
 @login_required
@@ -70,12 +70,12 @@ def sede(request, sede_id):
     request.session["sede_id"] = sede_id
     request.session["sede_nombre"] = str(sede)
 
-    return HttpResponseRedirect(reverse("ing:req_hoy"))
+    return HttpResponseRedirect(reverse("ingreso:req_hoy"))
 
 @login_required
 def req_hoy(request):
     if not request.session.get("sede_id", None):
-        return HttpResponseRedirect(reverse("ing:sedes"))
+        return HttpResponseRedirect(reverse("ingreso:sedes"))
 
     xdt = datetime.now() #timezone.now().date() #
     wdt = datetime(xdt.year, xdt.month, xdt.day, 0, 0, 0, 0) #datetime.combine(xdt, time.min) #
@@ -85,7 +85,7 @@ def req_hoy(request):
 
     req_list = RegEquipo.objects.filter(sede=sede_id, ts_ing__gte=wdt).order_by("-ts_ing")
 
-    return render(request,"ing/req_hoy.html", {"req_list": req_list, "sede_nombre": sede_nombre},)
+    return render(request,"ingreso/req_hoy.html", {"req_list": req_list, "sede_nombre": sede_nombre},)
 
 
 @login_required
@@ -102,7 +102,7 @@ def crear_persona(request):
         else:
             messages.error(request, "Forma con errores: muy probablemente ya existe una persona con ese documento(id)")
 
-    return render(request, "ing/persona_form.html", {"form": form})
+    return render(request, "ingreso/persona_form.html", {"form": form})
 
 
 @login_required
@@ -119,7 +119,7 @@ def crear_equipo(request):
         else:
             messages.error(request, "Forma con errores: muy probablemente ya existe un equipo con esa marca, tipo y # de serie")
 
-    return render(request, "ing/equipo_form.html", {"form": form})
+    return render(request, "ingreso/equipo_form.html", {"form": form})
 
 
 @login_required
@@ -129,7 +129,7 @@ def registrar_salida_equipo(request, req_id):
     req.save()
 
     messages.success(request, "Registro actualizado exitosamente")
-    return HttpResponseRedirect(reverse("ing:req_hoy"))
+    return HttpResponseRedirect(reverse("ingreso:req_hoy"))
 
 
 def is_datetime(string):
@@ -151,9 +151,9 @@ def borrar_req(request, req_id):
         if get_messages_count(request) == 0:
             req.delete()
             messages.success(request, "Registro borrado exitosamente")
-            return HttpResponseRedirect(reverse("ing:req_hoy"))
+            return HttpResponseRedirect(reverse("ingreso:req_hoy"))
 
-    return render(request, "ing/borrar_req.html", {"req": req})
+    return render(request, "ingreso/borrar_req.html", {"req": req})
 
 
 def autocomplete_portador(request):
@@ -252,9 +252,9 @@ def crear_req(request):
             if error_count == 0:
                 regeq.save()
                 messages.success(request, "Registro creado satisfactoriamente")
-                return redirect('ing:req_hoy')
+                return redirect('ingreso:req_hoy')
 
-    return render(request, 'ing/req_form.html', {'is_update': False, 'formRegEquipo': formRegEquipo, 'formPersona': formPersona, 'formEquipo': formEquipo})
+    return render(request, 'ingreso/req_form.html', {'is_update': False, 'formRegEquipo': formRegEquipo, 'formPersona': formPersona, 'formEquipo': formEquipo})
 
 from django.conf import settings
 
@@ -308,9 +308,9 @@ def mod_req(request, req_id):
             if error_count == 0:
                 regeq.save()
                 messages.success(request, "Registro modificado satisfactoriamente")
-                return redirect('ing:req_hoy')
+                return redirect('ingreso:req_hoy')
 
-    return render(request, 'ing/req_form.html', {'is_update': True, 'formRegEquipo': formRegEquipo, 'formPersona': formPersona, 'formEquipo': formEquipo})
+    return render(request, 'ingreso/req_form.html', {'is_update': True, 'formRegEquipo': formRegEquipo, 'formPersona': formPersona, 'formEquipo': formEquipo})
 
 
 from django.http import JsonResponse
