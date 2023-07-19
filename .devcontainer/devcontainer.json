@@ -4,6 +4,7 @@
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	"features": {
+		"ghcr.io/azure/azure-dev/azd:latest": {}
     },
 	"customizations": {
 		"vscode": {
