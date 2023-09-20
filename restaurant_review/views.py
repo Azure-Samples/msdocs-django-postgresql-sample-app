@@ -4,11 +4,13 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.cache import cache_page
 
 from restaurant_review.models import Restaurant, Review
 
 # Create your views here.
 
+@cache_page(60)
 def index(request):
     print('Request for index page received')
     restaurants = Restaurant.objects.annotate(avg_rating=Avg('review__rating')).annotate(review_count=Count('review'))

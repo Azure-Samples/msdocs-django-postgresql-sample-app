@@ -119,6 +119,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CACHES = {
+        "default": {  
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": os.environ.get('CACHELOCATION'),
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+                'PASSWORD': os.environ.get('CACHEKEY')
+            },
+        }
+    }
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
