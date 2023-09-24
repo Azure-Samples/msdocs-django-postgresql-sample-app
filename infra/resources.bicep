@@ -10,8 +10,16 @@ param secretKey string
 var prefix = '${name}-${resourceToken}'
 
 var pgServerName = '${prefix}-postgres-server'
+//added for Redis Cache
+var cacheServerName = '${prefix}-redisCache'
 var databaseSubnetName = 'database-subnet'
 var webappSubnetName = 'webapp-subnet'
+//added for Redis Cache
+var cacheSubnetName = 'cache-subnet'
+//added for Redis Cache
+var cachePrivateEndpointName = 'cache-privateEndpoint'
+//added for Redis Cache
+var cachePvtEndpointDnsGroupName = 'cacheDnsGroup'
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
   name: '${prefix}-vnet'
@@ -52,6 +60,12 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
           ]
         }
       }
+      {
+        name: cacheSubnetName
+        properties:{
+          addressPrefix: '10.0.2.0/24'
+        }
+      }
     ]
   }
   resource databaseSubnet 'subnets' existing = {
@@ -60,6 +74,10 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2019-11-01' = {
   resource webappSubnet 'subnets' existing = {
     name: webappSubnetName
   }
+  //added for Redis Cache
+  resource cacheSubnet 'subnets' existing = {
+    name: cacheSubnetName
+  }
 }
 
 resource privateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = {
@@ -67,6 +85,16 @@ resource privateDnsZone 'Microsoft.Network/privateDnsZones@2020-06-01' = {
   location: 'global'
   tags: tags
   dependsOn: [
+    virtualNetwork
+  ]
+}
+
+// added for Redis Cache
+resource privateDnsZoneCache 'Microsoft.Network/privateDnsZones@2020-06-01' = {
+  name: 'privatelink.redis.cache.windows.net'
+  location: 'global'
+  tags: tags
+  dependsOn:[
     virtualNetwork
   ]
 }
@@ -83,6 +111,54 @@ resource privateDnsZoneLink 'Microsoft.Network/privateDnsZones/virtualNetworkLin
   }
 }
 
+ //added for Redis Cache
+resource privateDnsZoneLinkCache 'Microsoft.Network/privateDnsZones/virtualNetworkLinks@2020-06-01' = {
+ parent: privateDnsZoneCache
+ name: 'privatelink.redis.cache.windows.net-applink'
+ location: 'global'
+ properties: {
+   registrationEnabled: false
+   virtualNetwork: {
+     id: virtualNetwork.id
+   }
+ }
+}
+
+
+resource cachePrivateEndpoint 'Microsoft.Network/privateEndpoints@2023-05-01' = {
+  name: cachePrivateEndpointName
+  location: location
+  properties: {
+    subnet: {
+      id: virtualNetwork::cacheSubnet.id
+    }
+    privateLinkServiceConnections: [
+      {
+        name: cachePrivateEndpointName
+        properties: {
+          privateLinkServiceId: redisCache.id
+          groupIds: [
+            'redisCache'
+          ]
+        }
+      }
+    ]
+  }
+  resource cachePvtEndpointDnsGroup 'privateDnsZoneGroups' = {
+    name: cachePvtEndpointDnsGroupName
+    properties: {
+      privateDnsZoneConfigs: [
+        {
+          name: 'privatelink-redis-cache-windows-net'
+          properties: {
+            privateDnsZoneId: privateDnsZoneCache.id
+          }
+        }
+      ]
+    }
+  }
+}
+
 resource web 'Microsoft.Web/sites@2022-03-01' = {
   name: '${prefix}-app-service'
   location: location
@@ -92,7 +168,7 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
     serverFarmId: appServicePlan.id
     siteConfig: {
       alwaysOn: true
-      linuxFxVersion: 'PYTHON|3.10'
+      linuxFxVersion: 'PYTHON|3.11'
       ftpsState: 'Disabled'
       appCommandLine: 'startup.sh'
     }
@@ -108,6 +184,7 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
       AZURE_POSTGRESQL_CONNECTIONSTRING: 'dbname=${djangoDatabase.name} host=${postgresServer.name}.postgres.database.azure.com port=5432 sslmode=require user=${postgresServer.properties.administratorLogin} password=${databasePassword}'
       SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
       SECRET_KEY: secretKey
+      //TODO: add settings for Redis Cache
     }
   }
 
@@ -151,7 +228,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2021-03-01' = {
   location: location
   tags: tags
   sku: {
-    name: 'B1'
+    name: 'S1'
   }
   properties: {
     reserved: true
@@ -228,6 +305,36 @@ resource djangoDatabase 'Microsoft.DBforPostgreSQL/flexibleServers/databases@202
   parent: postgresServer
   name: 'django'
 }
+
+//added for Redis Cache
+resource redisCache 'Microsoft.Cache/redis@2023-04-01' = {
+  location:location
+  name:cacheServerName
+  properties:{
+    sku:{
+      capacity: 1
+      family:'C'
+      name:'Standard'
+    }
+    enableNonSslPort:false
+    redisVersion:'6'
+    publicNetworkAccess:'Disabled'
+    //subnetId:virtualNetwork::cacheSubnet.id //commented out b/c vnet injection only works for premium skus
+  }
+
+  // resource redisCacheNetwork 'privateEndpointConnections' = {
+  //   name: '${cacheServerName}-privateEndpointConnection'
+  //   properties:{
+  //     privateLinkServiceConnectionState: {
+  //       actionsRequired: 'Change on the service provider will require updates on the consumer. see https://learn.microsoft.com/en-us/azure/templates/microsoft.cache/redis/privateendpointconnections?pivots=deployment-language-bicep#privatelinkserviceconnectionstate'
+  //       description: 'the private link service connection state for setting up private link'
+  //       status: 'Approved'
+  //     }  
+  //     privateEndpoint: cachePrivateEndpoint
+  //   }
+  // }
+
+}    
 
 output WEB_URI string = 'https://${web.properties.defaultHostName}'
 output APPLICATIONINSIGHTS_CONNECTION_STRING string = applicationInsightsResources.outputs.APPLICATIONINSIGHTS_CONNECTION_STRING
