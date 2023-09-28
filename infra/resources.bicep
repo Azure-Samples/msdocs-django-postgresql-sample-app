@@ -185,6 +185,8 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
       SCM_DO_BUILD_DURING_DEPLOYMENT: 'true'
       SECRET_KEY: secretKey
       //TODO: add settings for Redis Cache
+      CACHELOCATION: 'rediss://${redisCache.name}.redis.cache.windows.net:6380/0'
+      CACHEKEY: redisCache.listKeys().primaryKey
     }
   }
 
