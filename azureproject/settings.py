@@ -152,7 +152,7 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-BRIDE_AND_GROOM = 'Sarah and Miles'
+BRIDE_AND_GROOM = 'Miles and Sarah'
 # the date of your wedding
 WEDDING_DATE = 'May 25th, 2024'
 # the location of your wedding

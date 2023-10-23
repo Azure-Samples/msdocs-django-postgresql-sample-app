@@ -2,7 +2,7 @@
 {% load static %}
 {% block page_head %}
     <!-- Custom CSS -->
-    <link href="{% static 'wedding-portal/css/creative.css' %}" rel="stylesheet">
+    <link href="{% static 'azureproject/css/creative.css' %}" rel="stylesheet">
 {% endblock %}
 {% block page_content %}
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
@@ -24,7 +24,7 @@
                         <a class="page-scroll" href="#main-header">Home</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#event">Event</a>
+                        <a class="page-scroll" href="#friday-night">Friday Night</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#niagara">Niagara-on-the-Lake</a>
@@ -45,12 +45,12 @@
     <header id="main-header">
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>We did it!!</h1>
+                <h1>&#128060;</h1>
                 {% comment %}
                 <hr>
                 <h2>It's wedding week!</h2>
                 <a href="#welcome" class="btn btn-info btn-xl page-scroll">Welcome</a>
-                <a href="#event" class="btn btn-primary btn-xl page-scroll">Friday</a>
+                <a href="#friday-night" class="btn btn-primary btn-xl page-scroll">Friday</a>
                 <a href="#saturday-event" class="btn btn-success btn-xl page-scroll">Saturday</a>
                 {% endcomment %}
             </div>
@@ -60,24 +60,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Welcome!</h2>
+                    <h2 class="section-heading">Celebrate with us!</h2>
                     <hr>
                     <p>
-                        Hello friends and family! It's the week of the wedding!
+                        Hey friends and family! Thank you for shipping us for the past 10 years. Wait no more as we are finally tying the knot!
                     </p>
                     <p>
-                        If you're looking for information about the event, look no further!
-                        Please see below for all the details regarding <a href="#event" class="page-scroll">Friday night's welcome party</a> and <a href="#saturday-event" class="page-scroll">Saturday's event</a>.
+                        We've created this website as a convenient and interactive way to share all the important details with you in the lead up to our wedding.
+                        Please see below for all the details regarding <a href="#friday-night" class="page-scroll">Friday night's welcome party</a> and <a href="#saturday-event" class="page-scroll">Saturday's event</a>.
+                    <p>
+                        Take a look around and don't forget to <a href="#rsvp" class="page-scroll">RSVP</a>!
+                    </p>
                     </p>
                     <p>
-                        To get added to the wedding whatsapp group first create an account and then send an
-                        email to <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
-                        Also, the current front-runner for the wedding hashtag (if you're into that sort of thing) is #getlukky.
+                        Also, the current front-runner for the wedding hashtag (if you're into that sort of thing) is #milesforsarah.
                     </p>
                     <p>
-                        Looking forward to seeing everyone soon!
+                        Looking forward to seeing everyone on our big day!
                     </p>
-                    <p class="pull-right">- Cory and Rowena</p>
+                    <p class="pull-right">- Miles and Sarah</p>
                 </div>
             </div>
         </div>
@@ -86,12 +87,12 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#event" class="portfolio-box page-scroll">
-                        <img src="{% static 'wedding-portal/images/ravine-nav.jpg' %}" class="img-responsive" alt="">
+                    <a href="#friday-night" class="portfolio-box page-scroll">
+                        <img src="{% static 'azureproject/images/blue-mansion-day.jpg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
-                                    The Event
+                                    Tea Ceremony & Vows Exchange
                                 </div>
                             </div>
                         </div>
@@ -99,11 +100,11 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#niagara" class="portfolio-box page-scroll">
-                        <img src="{% static 'wedding-portal/images/prince-of-wales-hotel-nav.jpg' %}" class="img-responsive" alt="">
+                        <img src="{% static 'azureproject/images/eando-classy.jpg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
-                                    Niagara-on-the-Lake
+                                    The Reception
                                 </div>
                             </div>
                         </div>
@@ -111,7 +112,19 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#story" class="portfolio-box page-scroll">
-                        <img src="{% static 'wedding-portal/images/twelve-apostles-nav.jpg' %}" class="img-responsive" alt="">
+                        <img src="{% static 'azureproject/images/penang-bridge.jpg' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                    Penang Island
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#story" class="portfolio-box page-scroll">
+                        <img src="{% static 'azureproject/images/twelve-apostles-nav.jpg' %}" class="img-responsive" alt="">
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-name">
@@ -124,7 +137,7 @@
             </div>
         </div>
     </section>
-    {% include 'partials/event.html' %}
+    {% include 'partials/friday-night.html' %}
     <section id="niagara">
         {% include 'partials/niagara.html' %}
     </section>
