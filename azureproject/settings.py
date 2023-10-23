@@ -14,8 +14,8 @@ import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+#BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -34,13 +34,14 @@ if 'CODESPACE_NAME' in os.environ:
 # Application definition
 
 INSTALLED_APPS = [
-    'restaurant_review.apps.RestaurantReviewConfig',
+    #'restaurant_review.apps.RestaurantReviewConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'guests.apps.GuestsConfig',
 ]
 
 MIDDLEWARE = [
@@ -58,7 +59,9 @@ ROOT_URLCONF = 'azureproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join('azureproject', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -135,10 +138,35 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
-STATIC_URL = 'static/'
+#STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+#STATIC_URL = 'static/'
+
+STATIC_ROOT = 'static_root'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join('azureproject', 'static'),
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+BRIDE_AND_GROOM = 'Sarah and Miles'
+# the date of your wedding
+WEDDING_DATE = 'May 25th, 2024'
+# the location of your wedding
+WEDDING_LOCATION = 'Penang, Malaysia'
+# This is used in links in save the date / invitations
+WEDDING_WEBSITE_URL = 'https://milesforsarah.cubetown.co.uk'
+
+DEFAULT_WEDDING_EMAIL = 'mileseu1@gmail.com'
+WEDDING_CC_LIST = [] 
+
+
+# the address your emails (save the dates/invites/etc.) will come from
+DEFAULT_WEDDING_FROM_EMAIL = BRIDE_AND_GROOM + ' <' + DEFAULT_WEDDING_EMAIL + '>' # change to 'address@domain.tld'
+# when sending test emails it will use this address
+DEFAULT_WEDDING_TEST_EMAIL = DEFAULT_WEDDING_FROM_EMAIL
+# the default reply-to of your emails, change, if you want to have your replies somewhere else
+DEFAULT_WEDDING_REPLY_EMAIL = DEFAULT_WEDDING_EMAIL
