@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_head %}
+    <!-- Custom CSS -->
+    <link href="{% static 'wedding-portal/css/creative.css' %}" rel="stylesheet">
+{% endblock %}
+{% block page_content %}
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">{{ couple_name }}'s Big Day</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#main-header">Home</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#event">Event</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#niagara">Niagara-on-the-Lake</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#other-stuff">Everything Else</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+    {% block main %}
+    <header id="main-header">
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1>We did it!!</h1>
+                {% comment %}
+                <hr>
+                <h2>It's wedding week!</h2>
+                <a href="#welcome" class="btn btn-info btn-xl page-scroll">Welcome</a>
+                <a href="#event" class="btn btn-primary btn-xl page-scroll">Friday</a>
+                <a href="#saturday-event" class="btn btn-success btn-xl page-scroll">Saturday</a>
+                {% endcomment %}
+            </div>
+        </div>
+    </header>
+    <section class="bg-info" id="welcome">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Welcome!</h2>
+                    <hr>
+                    <p>
+                        Hello friends and family! It's the week of the wedding!
+                    </p>
+                    <p>
+                        If you're looking for information about the event, look no further!
+                        Please see below for all the details regarding <a href="#event" class="page-scroll">Friday night's welcome party</a> and <a href="#saturday-event" class="page-scroll">Saturday's event</a>.
+                    </p>
+                    <p>
+                        To get added to the wedding whatsapp group first create an account and then send an
+                        email to <a href="mailto:{{ support_email }}">{{ support_email }}</a>.
+                        Also, the current front-runner for the wedding hashtag (if you're into that sort of thing) is #getlukky.
+                    </p>
+                    <p>
+                        Looking forward to seeing everyone soon!
+                    </p>
+                    <p class="pull-right">- Cory and Rowena</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="no-padding" id="navigation">
+        <div class="container-fluid">
+            <div class="row no-gutter">
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#event" class="portfolio-box page-scroll">
+                        <img src="{% static 'wedding-portal/images/ravine-nav.jpg' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                    The Event
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#niagara" class="portfolio-box page-scroll">
+                        <img src="{% static 'wedding-portal/images/prince-of-wales-hotel-nav.jpg' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                    Niagara-on-the-Lake
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <a href="#story" class="portfolio-box page-scroll">
+                        <img src="{% static 'wedding-portal/images/twelve-apostles-nav.jpg' %}" class="img-responsive" alt="">
+                        <div class="portfolio-box-caption">
+                            <div class="portfolio-box-caption-content">
+                                <div class="project-name">
+                                    Our Story
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% include 'partials/event.html' %}
+    <section id="niagara">
+        {% include 'partials/niagara.html' %}
+    </section>
+{% comment %}
+        {% include 'partials/wedding-party.html' %}
+{% endcomment %}
+    <section id="other-stuff" class="bg-primary">
+        {% include 'partials/misc.html' %}
+    </section>
+    <section id="gifts">
+        {% include 'partials/gifts.html' %}
+    </section>
+    <section id="story" class="bg-dark">
+        {% include 'partials/story.html' %}
+    </section>
+    {% include 'partials/proposal.html' %}
+    {% include 'partials/save-the-dates.html' %}
+    <section id="contact" class="bg-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Contact us!</h2>
+                    <hr class="primary">
+                    <p>If you have any questions don't hesitate to reach out!</p>
+                </div>
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                    <p><a href="mailto:{{ support_email }}">{{ support_email }}</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% endblock %}
+{% endblock %}
+{% block page_js %}
+    <!-- Plugin JavaScript -->
+    <!-- Easing is for the vertical scroll animations -->
+    <script src="{% static 'creative/js/jquery.easing.min.js' %}"></script>
+    <!-- Automatically fit text based on screen size.-->
+    <script src="{% static 'creative/js/jquery.fittext.js' %}"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static 'creative/js/creative.js' %}"></script>
+{% endblock %}
