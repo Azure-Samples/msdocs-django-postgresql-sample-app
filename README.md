@@ -2,6 +2,13 @@
 
 This is a Python web app using the Django framework and the Azure Database for PostgreSQL relational database service. The Django app is hosted in a fully managed Azure App Service. This app is designed to be be run locally and then deployed to Azure. You can either deploy this project by following the tutorial [*Deploy a Python (Django or Flask) web app with PostgreSQL in Azure*](https://docs.microsoft.com/azure/app-service/tutorial-python-postgresql-app) or by using the [Azure Developer CLI (azd)](https://learn.microsoft.com/azure/developer/azure-developer-cli/overview) according to the instructions below.
 
+## The Cache branch
+The Cache branch in the repository contains sample code to save web response out and user session data in a Redis Cache. For web response caching, if a user clicks into the detailed view of a resturant, the details page will be cached for 60 seconds. This increases the application performance by saving server resource and reducing dependency calls into the PostgreSQL. For user session data such as last viewed restaurant, saving in Redis Cache improves consistency and resiliency comparing with in-memory.
+Files changed in the Cache branch:
+* ./azureproject/production.py and settings.py - added cache and session middlewares
+* ./restaurant_review/views.py - added @cache_page tag and session data "lastViewedRestaurant" 
+* ./restaurant_review/templates/restaurant_review/index.html - added display for 'LastViewedRestaurant'
+
 ## Requirements
 
 The [requirements.txt](./requirements.txt) has the following packages:

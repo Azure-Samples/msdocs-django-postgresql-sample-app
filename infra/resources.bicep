@@ -321,20 +321,8 @@ resource redisCache 'Microsoft.Cache/redis@2023-04-01' = {
     enableNonSslPort:false
     redisVersion:'6'
     publicNetworkAccess:'Disabled'
-    //subnetId:virtualNetwork::cacheSubnet.id //commented out b/c vnet injection only works for premium skus
   }
 
-  // resource redisCacheNetwork 'privateEndpointConnections' = {
-  //   name: '${cacheServerName}-privateEndpointConnection'
-  //   properties:{
-  //     privateLinkServiceConnectionState: {
-  //       actionsRequired: 'Change on the service provider will require updates on the consumer. see https://learn.microsoft.com/en-us/azure/templates/microsoft.cache/redis/privateendpointconnections?pivots=deployment-language-bicep#privatelinkserviceconnectionstate'
-  //       description: 'the private link service connection state for setting up private link'
-  //       status: 'Approved'
-  //     }  
-  //     privateEndpoint: cachePrivateEndpoint
-  //   }
-  // }
 
 }    
 
