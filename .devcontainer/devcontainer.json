@@ -1,5 +1,5 @@
 {
-	"name": "msdocs-django-postgresql-sample-app",
+	"name": "python-app-service-postgresql-redis-infra",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
