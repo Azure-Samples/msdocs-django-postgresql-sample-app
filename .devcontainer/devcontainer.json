@@ -51,9 +51,9 @@
 			}
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally. 5000 is for Flask, and 5432 is for PostgreSQL.
+	// Use 'forwardPorts' to make a list of ports inside the container available locally. 5000 is for Flask, 8000 is for Django, and 5432 is for PostgreSQL.
 	"forwardPorts": [
-		5000, 5432
+		8000, 5000, 5432
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "",
