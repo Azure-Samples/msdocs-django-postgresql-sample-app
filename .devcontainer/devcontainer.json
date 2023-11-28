@@ -1,5 +1,5 @@
 {
-	"name": "msdocs-flask-postgresql-sample-app",
+	"name": "msdocs-django-postgresql-sample-app",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
