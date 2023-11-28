@@ -42,6 +42,9 @@
   </style>
 {% endblock %}
 {% block content %}
+  {% if LastViewedRestaurant %}
+      <h3>Last viewed restaurant (saved in cache): {{ LastViewedRestaurant }}</h3>
+  {% endif %}
   <h1>Restaurants</h1>
 
   {% if restaurants %}

@@ -1,10 +1,34 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/Azure/azure-dev/main/schemas/v1.0/azure.yaml.json
+# azure.yaml is an azd configuration file and isn't used by the sample application. 
 
-name: django-postgresql-sample-app
+name: python-app-service-postgresql-redis-infra
 metadata:
-  template: django-postgresql-sample-app@0.0.1-beta
+  template: python-app-service-postgresql-redis-infra@0.0.1-beta
 services:
   web:
     project: .
     language: py
     host: appservice
+hooks:
+  postprovision:
+    posix: 
+      shell: sh
+      run: echo $'\n\nApp Service app has the following settings:\n' && echo "$WEB_APP_SETTINGS" | jq -r '.[]' | sed 's/\(.*\)/\t- \1/' && echo -e $"\nSee the settings in the portal:\033[1;36m $WEB_APP_CONFIG" 
+      interactive: true
+      continueOnError: true
+    windows:
+      shell: pwsh
+      run: Write-Host "`n`nApp Service app has the following settings:`n" $WEB_APP_SETTINGS | ConvertFrom-Json | ForEach-Object { Write-Host "\t- $_" }
+      interactive: true
+      continueOnError: true
+  postdeploy:
+    posix: 
+      shell: sh
+      run: echo -e $"\n\nOpen SSH session to App Service container at:\033[1;36m $WEB_APP_SSH\033[0m" && echo -e $"Stream App Service logs at:\033[1;36m $WEB_APP_LOG_STREAM"
+      interactive: true
+      continueOnError: true
+    windows:
+      shell: pwsh
+      run: Write-Host "`n`nOpen SSH session to App Service container at:`n" $WEB_APP_SSH; Write-Host "Stream App Service logs at:`n" $WEB_APP_LOG_STREAM
+      interactive: true
+      continueOnError: true

@@ -1,11 +1,11 @@
 {
-	"name": "msdocs-django-postgresql-sample-app",
+	"name": "msdocs-flask-postgresql-sample-app",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
 	"features": {
 		"ghcr.io/azure/azure-dev/azd:latest": {}
-    },
+	},
 	"customizations": {
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
@@ -51,9 +51,9 @@
 			}
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// Use 'forwardPorts' to make a list of ports inside the container available locally. 5000 is for Flask, and 5432 is for PostgreSQL.
 	"forwardPorts": [
-		8000, 5432
+		5000, 5432
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "",

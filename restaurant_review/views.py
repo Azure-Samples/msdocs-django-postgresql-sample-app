@@ -4,6 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.cache import cache_page
 
 from restaurant_review.models import Restaurant, Review
 
@@ -12,12 +13,14 @@ from restaurant_review.models import Restaurant, Review
 def index(request):
     print('Request for index page received')
     restaurants = Restaurant.objects.annotate(avg_rating=Avg('review__rating')).annotate(review_count=Count('review'))
-    return render(request, 'restaurant_review/index.html', {'restaurants': restaurants})
+    lastViewedRestaurant = request.session.get("lastViewedRestaurant", False)
+    return render(request, 'restaurant_review/index.html', {'LastViewedRestaurant': lastViewedRestaurant, 'restaurants': restaurants})
 
-
+@cache_page(60)
 def details(request, id):
     print('Request for restaurant details page received')
     restaurant = get_object_or_404(Restaurant, pk=id)
+    request.session["lastViewedRestaurant"] = restaurant.name
     return render(request, 'restaurant_review/details.html', {'restaurant': restaurant})
 
 

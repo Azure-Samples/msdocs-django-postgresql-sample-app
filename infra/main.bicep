@@ -42,3 +42,7 @@ module resources 'resources.bicep' = {
 output AZURE_LOCATION string = location
 output APPLICATIONINSIGHTS_CONNECTION_STRING string = resources.outputs.APPLICATIONINSIGHTS_CONNECTION_STRING
 output WEB_URI string = resources.outputs.WEB_URI
+output WEB_APP_SETTINGS array = resources.outputs.WEB_APP_SETTINGS
+output WEB_APP_LOG_STREAM string = resources.outputs.WEB_APP_LOG_STREAM
+output WEB_APP_SSH string = resources.outputs.WEB_APP_SSH
+output WEB_APP_CONFIG string = resources.outputs.WEB_APP_CONFIG
