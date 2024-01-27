@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Country and Provinces</title>
+</head>
+<body>
+    <h1>Countries and Their Provinces</h1>
+    <a href="{% url 'add_country' %}">Add New Country</a>
+    <ul>
+        {% for country in countries %}
+            <li>
+                {{ country.country_name }} (ID: {{ country.id }})
+                <ul>
+                    {% for province in country.province_set.all %}
+                        <li>{{ province.province_name }} (ID: {{ province.id }})</li>
+                    {% empty %}
+                        <li>No provinces</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
