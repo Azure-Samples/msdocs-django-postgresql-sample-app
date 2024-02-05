@@ -8,8 +8,8 @@ languages:
 products:
 - azure
 - azure-app-service
-- azure-postgresql
-- azure-virtual-networks
+- azure-database-postgresql
+- azure-virtual-network
 urlFragment: msdocs-django-postgresql-sample-app
 name: Deploy a Python (Django) web app with PostgreSQL in Azure
 description: This is a Python web app using the Django framework and the Azure Database for PostgreSQL relational database service. 
