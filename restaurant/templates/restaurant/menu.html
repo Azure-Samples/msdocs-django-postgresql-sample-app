@@ -1,0 +1,49 @@
+{% load static %}
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        document.body.style.opacity = '1';
+    });
+</script>
+</head>
+<body>
+    <style>
+        body {
+            background-image: url('{% static "images/menu_bg.jpg" %}');
+            /* Other background styles... */
+        }
+        </style>
+    <nav class="menu-navbar">
+        <a href="/" class="home-link">Home</a>
+        {% for entry in menu_data %}
+            <a href="#section_{{ forloop.counter }}">{{ entry.section.name }}</a>
+        {% endfor %}
+    </nav>
+
+    <div class="menu-content-wrapper">
+            {% block content %}
+            <div class="menu-title-wrapper">
+                <h1>Our Menu</h1>
+            </div>
+            {% for entry in menu_data %}
+            <h2 id="section_{{ forloop.counter }}">{{ entry.section.name }}</h2>
+                <p>{{ entry.section.description }}</p>
+                <ul>
+                    {% for item in entry.items %}
+                        <li>
+                            <span class="menu-item-name">{{ item.name }}</span> - 
+                            <span class="menu-item-price">${{ item.price }}</span>
+                            <p>{{ item.description }}</p>
+                        </li>
+                    {% empty %}
+                        <li>No items in this section.</li>
+                    {% endfor %}
+                </ul>
+            {% endfor %}
+        {% endblock %}
+    </div>
+</body>

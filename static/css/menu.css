@@ -1,0 +1,167 @@
+body {
+    font-family: 'Merriweather', serif; /* Elegant serif font */
+    background-color: #1a1a1a; /* Rich dark background */
+    color: #d2b48c; /* Gold-like font color for luxury */
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+    padding: 2em;
+    line-height: 1.6;
+    text-align: center; /* Centering text for the entire body */
+    background-image: url('images/menu_bg.jpg'); /* Path to your image */
+    background-size: cover; /* Ensures the image covers the entire area */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+    background-attachment: fixed; /* Optional: keeps the image fixed during scroll */
+}
+
+.content {
+    max-width: 800px; /* Adjust this value as needed */
+    margin: 0 auto; /* Centers the content */
+    padding: 2em;
+}
+
+h1, h2, p, ul {
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%; /* Adjust the width as per the content length */
+}
+
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.5em;
+    color: #fff; /* Pure white for main heading */
+    letter-spacing: 2px;
+}
+
+h2 {
+    font-size: 2em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    color: #fff;
+    padding-top: 60px; /* Height of your fixed navbar plus some extra space */
+    margin-top: -60px; /* Negative margin to offset the extra padding */
+}
+
+p {
+    font-size: 1.2em;
+    color: #d2b48c;
+}
+
+ul {
+    list-style: none; /* Removes default list styling */
+    padding: 0;
+}
+
+li {
+    background-color: #292929; /* Slightly lighter background for each item */
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 10px; /* Rounded corners for elegance */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    text-align: center; /* Centering text inside each list item */
+}
+
+li p {
+    margin-top: 0.5em;
+    color: #d2b48c; /* Maintaining the color scheme */
+    font-size: 1em;
+}
+
+.menu-item-name, .menu-item-price {
+    font-size: 1.5em; /* Adjust the size as needed */
+    font-weight: bold; /* Optional: to make them stand out */
+}
+
+.menu-navbar {
+    background-color: #333; /* Existing background color */
+    padding: 10px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 63%; /* Adjust this value to control the width */
+    border-radius: 10px; /* Optional, for rounded corners */
+    font-size: 1.2em; /* Adjust the font size as needed */
+}
+
+.menu-navbar a {
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.menu-navbar a:hover {
+    color: #d2b48c; /* Highlight color */
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+.menu-content-wrapper {
+    background-color: #333; /* Same as the navbar color */
+    padding: 1em;
+    margin-top: 60px; /* Adjust based on your navbar height */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px; /* Slimmer width */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2); /* Optional: Adds depth with a shadow */
+    border-radius: 10px;
+}
+
+.menu-title-wrapper {
+    background-color: #292929; /* Same background color as list items */
+    text-align: center;
+    padding: 1em;
+    margin: 1em auto; /* Center the box and add margin on top and bottom */
+    max-width: 57%; /* Adjust the width as needed */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    color: #d2b48c;
+
+}
+
+.menu-navbar .home-link {
+    /* Specific styles for the 'Home' link */
+    color: white;
+    padding: 10px 20px;
+    /* Other styles as needed */
+}
+
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .content {
+        max-width: 100%;
+        padding: 1em;
+    }
+
+    h1, h2, p, ul {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        padding-top: 50px; /* Slightly less for mobile, adjust as needed */
+        margin-top: -50px;
+        font-size: 1.5em;
+    }
+
+    p, li p {
+        font-size: 1em;
+    }
+
+    .menu-item-name, .menu-item-price {
+        font-size: 1.2em; /* Smaller size for mobile devices */
+    }
+}
