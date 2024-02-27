@@ -7,7 +7,7 @@ body {
     padding: 2em;
     line-height: 1.6;
     text-align: center; /* Centering text for the entire body */
-    /*background-image: url('.../images/menu_bg.jpg'); /* Path to your image */
+    background-image: url('images/menu_bg.jpg'); /* Path to your image */
     background-size: cover; /* Ensures the image covers the entire area */
     background-position: center; /* Centers the image */
     background-repeat: no-repeat; /* Prevents the image from repeating */
