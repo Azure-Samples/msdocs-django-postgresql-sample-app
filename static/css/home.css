@@ -1,0 +1,155 @@
+:root {
+    --background-color: #1a1a1a;
+    --text-color: #d2b48c;
+    --accent-color: #292929;
+    --button-bg-color: #333;
+    --font-family: 'Merriweather', serif;
+    --header-bg-color: rgba(26, 26, 26, 0.85); /* Semi-transparent black */
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    transition: opacity 0.8s ease-in;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.landing-header {
+    text-align: center;
+    padding: 5vh 0; /* Adjust as needed */
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/steak.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin-bottom: 2em;
+}
+
+
+
+
+.landing-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.menu-button, .scroll-to-about {
+    background-color: var(--button-bg-color);
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px; /* Increased padding for larger buttons */
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1.1rem; /* Larger font size for better readability */
+}
+
+.menu-button:hover, .scroll-to-about:hover {
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+/* Hover effect for navigation links */
+.menu-button:hover, .scroll-to-about:hover {
+    color: var(--background-color);
+    background-color: var(--text-color);
+    transform: scale(1.05); /* Slightly enlarges the button */
+}
+
+/* Animation for social icons */
+.social-icon:hover {
+    transform: translateY(-5px); /* Already included, emphasizing the hover effect */
+}
+
+/* Adding a transition effect for smoother animation */
+.menu-button, .scroll-to-about, .social-icon {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.restaurant-title {
+    margin: 0;
+    font-size: 4em; /* Larger font size for title */
+    padding: 0 20px; /* Adds padding to handle narrow screens */
+}
+
+.about-section {
+    text-align: center;
+    padding: 6em 2em;
+    background-color: var(--accent-color);
+    color: white;
+    margin: auto 0;
+    border: 1px solid #d2b48c; /* Adds a subtle gold border */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Adds a subtle shadow for depth */
+}
+
+
+.about-section h2 {
+    font-size: 2.5rem; /* Larger font size for section heading */
+    color: #fff; /* Ensures high contrast against the dark background */
+    margin-bottom: 1rem;
+}
+
+.about-section p {
+    font-size: 1.2rem; /* Adjusts font size for readability */
+    max-width: 800px; /* Optimizes line length for reading */
+    margin: auto; /* Centers the text block */
+}
+
+
+.footer {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    text-align: center;
+    padding: 2em 0;
+    margin-top: auto; /* Ensures footer is at the bottom */
+}
+
+.social-links {
+    margin-bottom: 1em;
+}
+
+.social-icon {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    padding: 10px 15px; /* Increased padding for larger touch targets */
+    background-color: var(--button-bg-color);
+    border-radius: 5px;
+    transition: transform 0.2s ease;
+}
+
+/* Enhanced social icons with potential for SVG or font icons */
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Fixed size for icons */
+    height: 40px; /* Fixed size for icons */
+}
+
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+    .landing-header {
+        padding: 5vh 0; /* Reduce the top and bottom padding as necessary */
+    }
+
+    .landing-nav {
+        padding-bottom: 10px; /* Reduced padding */
+        flex-direction: column; /* Stack the items if there are more in the future */
+    }
+
+    .restaurant-title {
+        font-size: 2.5em; /* Smaller font size for mobile */
+        padding: 0 10px; /* Adjust padding as needed */
+    }
+}

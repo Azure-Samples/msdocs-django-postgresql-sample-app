@@ -1,0 +1,126 @@
+[
+    {
+        "model": "restaurant.menusection",
+        "pk": 1,
+        "fields": {
+            "name": "Starters",
+            "description": "Begin your dining experience with our exquisite starters.",
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menusection",
+        "pk": 2,
+        "fields": {
+            "name": "Steaks",
+            "description": "Premium cuts cooked to perfection.",
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menusection",
+        "pk": 3,
+        "fields": {
+            "name": "Sides",
+            "description": "Perfectly paired accompaniments to enhance your meal.",
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menusection",
+        "pk": 4,
+        "fields": {
+            "name": "Desserts",
+            "description": "Decadent desserts to conclude your dining experience.",
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 1,
+        "fields": {
+            "section": 1,
+            "name": "Oysters Rockefeller",
+            "description": "Baked oysters with a rich buttery topping.",
+            "price": 18.50,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 2,
+        "fields": {
+            "section": 1,
+            "name": "Beef Carpaccio",
+            "description": "Thinly sliced raw beef with capers and Parmesan.",
+            "price": 20.00,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 3,
+        "fields": {
+            "section": 2,
+            "name": "Filet Mignon",
+            "description": "8 oz tenderloin, grilled to your preference.",
+            "price": 45.00,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 4,
+        "fields": {
+            "section": 2,
+            "name": "Ribeye Steak",
+            "description": "12 oz ribeye, richly marbled and flavorful.",
+            "price": 42.00,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 5,
+        "fields": {
+            "section": 3,
+            "name": "Truffle Mashed Potatoes",
+            "description": "Creamy mashed potatoes with truffle oil.",
+            "price": 15.00,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 6,
+        "fields": {
+            "section": 3,
+            "name": "Grilled Asparagus",
+            "description": "Fresh asparagus grilled with olive oil and sea salt.",
+            "price": 14.00,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 7,
+        "fields": {
+            "section": 4,
+            "name": "Crème Brûlée",
+            "description": "Classic French custard topped with caramelized sugar.",
+            "price": 12.00,
+            "is_active": true
+        }
+    },
+    {
+        "model": "restaurant.menuitem",
+        "pk": 8,
+        "fields": {
+            "section": 4,
+            "name": "Chocolate Fondant",
+            "description": "Warm chocolate cake with a molten center.",
+            "price": 13.00,
+            "is_active": true
+        }
+    }
+]

@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steak House</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+    <script src="https://kit.fontawesome.com/4b2f630ed2.js" crossorigin="anonymous"></script>
+    <style>
+        .landing-header {
+            background-image: url('{% static "images/steak.jpg" %}');
+            /* Other background styles... */
+        }
+    </style>
+</head>
+<body>
+    <header class="landing-header">
+        <nav class="landing-nav">
+            <a href="/menu" class="menu-button">View Menu</a>
+        </nav>
+        <h1 class="restaurant-title">Steak House</h1>
+    </header>
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>Nestled in the heart of the city, Steak House is a culinary haven that offers a symphony of flavor, ambiance, and refined luxury. Our establishment is a tribute to timeless sophistication, where each dish is a masterpiece crafted with the finest ingredients and a touch of culinary artistry. Since our doors opened a decade ago, we've been committed to providing an exceptional dining experience that captivates your senses and transports you to a world of gastronomic delight. At Steak House, we don't just serve meals; we curate memories that linger long after the last morsel has been savored. Join us for an evening, and allow us to unfold before you a tapestry of culinary excellence that's woven with passion, flair, and an unwavering dedication to excellence.</p>
+    </section>
+    <footer class="footer">
+        <div class="social-links">
+            <!-- Example using Font Awesome icons (you'll need to include Font Awesome in your project) -->
+            <a href="http://facebook.com" class="social-icon"><i class="fa-brands fa-facebook"></i></a>
+            <a href="http://instagram.com" class="social-icon"><i class="fa fa-instagram"></i></a>
+            <a href="http://twitter.com" class="social-icon"><i class="fa fa-twitter"></i></a>
+        </div>
+        
+        
+        <p>Contact us: info@steakhouse.com</p>
+    </footer>
+</body>
+</html>
