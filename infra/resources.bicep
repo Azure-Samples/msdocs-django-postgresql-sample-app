@@ -169,6 +169,7 @@ resource web 'Microsoft.Web/sites@2022-03-01' = {
       linuxFxVersion: 'PYTHON|3.11'
       ftpsState: 'Disabled'
       appCommandLine: 'startup.sh'
+      minTlsVersion: '1.2'
     }
     httpsOnly: true
   }
@@ -357,6 +358,7 @@ resource redisCache 'Microsoft.Cache/redis@2023-04-01' = {
     enableNonSslPort:false
     redisVersion:'6'
     publicNetworkAccess:'Disabled'
+    minimumTlsVersion: '1.2'
   }
 }    
 
