@@ -1,0 +1,6 @@
+[tool.ruff]
+line-length = 79
+exclude = [".venv", "*/**/migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

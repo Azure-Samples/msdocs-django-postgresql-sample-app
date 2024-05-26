@@ -1,0 +1,76 @@
+<!-- myapp/templates/myapp/address_form.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Address and Date Selector</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form id="address-form" method="POST" action="{% url 'handle_form' %}">
+        {% csrf_token %}
+        <div>
+            <label for="address-input">Dirección Origen</label>
+            <input type="text" id="address-input" name="address1" placeholder="Agregue dirección de origen" autocomplete="off" />
+            <ul id="suggestions"></ul>
+            <input type="hidden" id="selected-address" name="selected_address1" />
+        </div>
+        <div>
+            <label for="address-input2">Dirección Destino</label>
+            <input type="text" id="address-input2" name="address2" placeholder="Agregue dirección de destino" autocomplete="off" />
+            <ul id="suggestions2"></ul>
+            <input type="hidden" id="selected-address2" name="selected_address2" />
+        </div>
+        <div>
+            <label for="date-input">Fecha de Viaje</label>
+            <input type="date" id="date-input" name="date" />
+        </div>
+        <div>
+            <label for="time-input">Hora de Viaje</label>
+            <input type="time" id="time-input" name="time" />
+        </div>
+        <button type="submit">Elección viajes</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            function setupAutocomplete(inputId, suggestionsId, hiddenInputId) {
+                let debounceTimer;
+                const debounceDelay = 300; // Delay in milliseconds
+
+                $(`#${inputId}`).on('input', function() {
+                    clearTimeout(debounceTimer);
+                    const query = $(this).val();
+                    if (query.length > 2) {
+                        debounceTimer = setTimeout(function() {
+                            $.ajax({
+                                url: '{% url "address_autocomplete" %}',
+                                data: { query: query },
+                                success: function(data) {
+                                    const suggestions = data.suggestions;
+                                    let suggestionsHtml = '';
+                                    suggestions.forEach(function(suggestion) {
+                                        suggestionsHtml += `<li data-place-name="${suggestion.place_name}" data-bbox="${suggestion.bbox.join(',')}" data-center="${suggestion.center.join(',')}">${suggestion.place_name}</li>`;
+                                    });
+                                    $(`#${suggestionsId}`).html(suggestionsHtml);
+                                }
+                            });
+                        }, debounceDelay);
+                    }
+                });
+
+                $(`#${suggestionsId}`).on('click', 'li', function() {
+                    const placeName = $(this).data('place-name');
+                    $(`#${inputId}`).val(placeName);
+                    $(`#${hiddenInputId}`).val(placeName);
+                    $(`#${suggestionsId}`).empty();
+                });
+            }
+
+            setupAutocomplete('address-input', 'suggestions', 'selected-address');
+            setupAutocomplete('address-input2', 'suggestions2', 'selected-address2');
+        });
+    </script>
+</body>
+</html>

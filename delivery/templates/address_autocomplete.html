@@ -1,0 +1,67 @@
+<!-- templates/address_autocomplete.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Address Autocomplete</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #suggestions {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        #suggestions li {
+            padding: 8px;
+            cursor: pointer;
+            background: #f0f0f0;
+            margin-bottom: 2px;
+        }
+        #suggestions li:hover {
+            background: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <form id="address-form" method="GET" action="/redirect-page/">
+        <input type="text" id="address-input" name="address" placeholder="Enter address" autocomplete="off" />
+        <ul id="suggestions"></ul>
+        <input type="hidden" id="selected-address" name="selected_address" />
+        <button type="submit">Go</button>
+    </form>
+
+    <script>
+        $(document).ready(function() {
+            let debounceTimer;
+            const debounceDelay = 300; // Delay in milliseconds
+
+            $('#address-input').on('input', function() {
+                clearTimeout(debounceTimer);
+                const query = $(this).val();
+                if (query.length > 2) {
+                    debounceTimer = setTimeout(function() {
+                        $.ajax({
+                            url: '/autocomplete/',
+                            data: { query: query },
+                            success: function(data) {
+                                const suggestions = data.suggestions;
+                                let suggestionsHtml = '';
+                                suggestions.forEach(function(suggestion) {
+                                    suggestionsHtml += `<li data-place-name="${suggestion.place_name}" data-bbox="${suggestion.bbox.join(',')}" data-center="${suggestion.center.join(',')}">${suggestion.place_name}</li>`;
+                                });
+                                $('#suggestions').html(suggestionsHtml);
+                            }
+                        });
+                    }, debounceDelay);
+                }
+            });
+
+            $('#suggestions').on('click', 'li', function() {
+                const placeName = $(this).data('place-name');
+                $('#address-input').val(placeName);
+                $('#selected-address').val(placeName);
+                $('#suggestions').empty();
+            });
+        });
+    </script>
+</body>
+</html>
