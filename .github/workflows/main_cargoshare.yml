@@ -75,4 +75,3 @@ jobs:
         with:
           app-name: 'cargoshare'
           slot-name: 'Production'
-          
