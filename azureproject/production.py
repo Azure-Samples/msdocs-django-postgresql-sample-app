@@ -28,7 +28,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Configure Postgres database based on connection string of the libpq Keyword/Value form
 # https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING
-conn_str = os.environ['AZURE_POSTGRESQL_CONNECTIONSTRING']
+conn_str = os.environ['dbname=msdocs-python-postgres-jfk-database host=msdocs-python-postgres-jfk-server.postgres.database.azure.com port=5432 sslmode=require user=jhylmrgazs password=z770U$$UQh7il2tc']
 conn_str_params = {pair.split('=')[0]: pair.split('=')[1] for pair in conn_str.split(' ')}
 DATABASES = {
     'default': {
@@ -43,7 +43,7 @@ DATABASES = {
 CACHES = {
         "default": {  
             "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": os.environ.get('AZURE_REDIS_CONNECTIONSTRING'),
+            "LOCATION": os.environ.get('rediss://:HPj7k4baaWgLc6YqCG6zDBt2S9tlPvuG5AzCaGFopMI=@msdocs-python-postgres-jfk-cache.redis.cache.windows.net:6380/0'),
             "OPTIONS": {
                 "CLIENT_CLASS": "django_redis.client.DefaultClient",
                 "COMPRESSOR": "django_redis.compressors.zlib.ZlibCompressor",
