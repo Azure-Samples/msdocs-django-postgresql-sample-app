@@ -14,10 +14,10 @@ jobs:
       fail-fast: false
       matrix:
         os: ["ubuntu-20.04"]
-        python_version: ["3.10", "3.11"]
+        python_version: ["3.10", "3.11", "3.12"]
     services:
       postgres:
-        image: postgres:12
+        image: postgres:16
         env:
           POSTGRES_PASSWORD: postgres
         ports:
