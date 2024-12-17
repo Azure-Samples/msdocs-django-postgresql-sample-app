@@ -41,12 +41,12 @@ jobs:
             flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         - name: Make sure Python code is all compilable
           run: |
-            python -m compileall azureproject -f
-            python -m compileall restaurant_review -f
+            python -m compileall skiproject -f
+            python -m compileall ski_app -f
         - name: Run Django server
           run: |
             python manage.py migrate
-            python manage.py test restaurant_review &&
+            python manage.py test ski_app &&
             python manage.py runserver &
           env:
             DBNAME: postgres
