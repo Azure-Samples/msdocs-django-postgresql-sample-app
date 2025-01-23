@@ -2,7 +2,7 @@
 	"name": "python-app-service-postgresql-redis-infra",
 	"dockerComposeFile": "docker-compose.yml",
 	"service": "app",
-	"workspaceFolder": "/workspace",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	"features": {
 		"ghcr.io/azure/azure-dev/azd:latest": {}
 	},
@@ -14,7 +14,8 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg"
+				"mtxr.sqltools-driver-pg",
+				"GitHub.copilot"
 			],
 			"settings": {
 				"sqltools.connections": [
@@ -29,7 +30,6 @@
 						"password": "app_password"
 					}
 				],
-				"python.pythonPath": "/usr/local/bin/python",
 				"python.languageServer": "Pylance",
 				"python.linting.enabled": true,
 				"python.linting.mypyEnabled": true,
@@ -51,12 +51,10 @@
 			}
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally. 5000 is for Flask, 8000 is for Django, and 5432 is for PostgreSQL.
-	"forwardPorts": [
-		8000, 5000, 5432
-	],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally. 
+	// "forwardPorts": [],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "",
+	"postCreateCommand": "pip install -r requirements.txt",
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
 }

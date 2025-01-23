@@ -13,18 +13,18 @@ hooks:
   postprovision:
     posix: 
       shell: sh
-      run: echo $'\n\nApp Service app has the following settings:\n' && echo "$WEB_APP_SETTINGS" | jq -r '.[]' | sed 's/\(.*\)/\t- \1/' && echo -e $"\nSee the settings in the portal:\033[1;36m $WEB_APP_CONFIG" 
+      run: printf '\nApp Service app has the following connection settings:\n' && printf "$CONNECTION_SETTINGS" | jq -r '.[]' | sed 's/\(.*\)/\t- \1/' && printf "\nSee the settings in the portal:\033[1;36m $WEB_APP_CONFIG\n" 
       interactive: true
       continueOnError: true
     windows:
       shell: pwsh
-      run: Write-Host "`n`nApp Service app has the following settings:`n" $WEB_APP_SETTINGS | ConvertFrom-Json | ForEach-Object { Write-Host "\t- $_" }
+      run: Write-Host "`n`nApp Service app has the following connection settings:`n" $CONNECTION_SETTINGS | ConvertFrom-Json | ForEach-Object { Write-Host "\t- $_" }
       interactive: true
       continueOnError: true
   postdeploy:
     posix: 
       shell: sh
-      run: echo -e $"\n\nOpen SSH session to App Service container at:\033[1;36m $WEB_APP_SSH\033[0m" && echo -e $"Stream App Service logs at:\033[1;36m $WEB_APP_LOG_STREAM"
+      run: printf "Open SSH session to App Service container at:\033[1;36m $WEB_APP_SSH\033[0m\nStream App Service logs at:\033[1;36m $WEB_APP_LOG_STREAM\n"
       interactive: true
       continueOnError: true
     windows:
