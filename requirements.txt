@@ -1,5 +1,5 @@
 Django==5.1.6
 psycopg2-binary==2.9.10
 python-dotenv==1.0.1
-whitenoise==6.7.0
+whitenoise==6.9.0
 django-redis==5.4.0
