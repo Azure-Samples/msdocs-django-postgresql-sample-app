@@ -33,6 +33,8 @@ DATABASES = {
          'HOST': os.environ['AZURE_POSTGRESQL_HOST'],
          'USER': os.environ['AZURE_POSTGRESQL_USER'],
          'PASSWORD': os.environ['AZURE_POSTGRESQL_PASSWORD'],
+         'HOST': os.environ.get('AZURE_POSTGRESQL_HOST', 'default_host'),
+         'PORT': os.environ.get('AZURE_POSTGRESQL_PORT', '5432'),
      }
  }
 
