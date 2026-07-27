@@ -149,7 +149,7 @@ resource privateDnsZoneDB 'Microsoft.Network/privateDnsZones@2024-06-01' = {
 }
 
 // Resources needed to secure Azure Managed Redis behind a private endpoint
-resource cachePrivateEndpoint 'Microsoft.Network/privateEndpoints@2024-01-01' = {
+resource cachePrivateEndpoint 'Microsoft.Network/privateEndpoints@2024-03-01' = {
   name: '${appName}-cache-privateEndpoint'
   location: location
   properties: {
@@ -288,16 +288,10 @@ resource redisCache 'Microsoft.Cache/redisEnterprise@2026-05-01-preview' = {
   }
 }
 
-resource redisDatabase 'Microsoft.Cache/redisEnterprise/databases@2026-05-01-preview' = {
+// The default Redis Enterprise database is platform-managed; reference it by ID.
+resource redisDatabase 'Microsoft.Cache/redisEnterprise/databases@2026-05-01-preview' existing = {
   parent: redisCache
   name: 'default'
-  properties: {
-    accessKeysAuthentication: 'Enabled'
-    clientProtocol: 'Encrypted'
-    clusteringPolicy: 'OSSCluster'
-    evictionPolicy: 'VolatileLRU'
-    port: 10000
-  }
 }
 
 // The App Service plan is configured to the B1 pricing tier
